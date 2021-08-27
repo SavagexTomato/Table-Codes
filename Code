@@ -1,0 +1,129 @@
+
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Calculators</title>
+   </head>
+   <script src="JS/NextHeatCalc.js"></script>
+   <script src="JS/HeatsLeftCalc.js"></script>
+   <link rel="stylesheet" type="text/css" href="CSS/CSS.css" />
+   <body>
+     <div class="container">
+       <div class="lionessInfo">
+       <h2>Lioness Information</h2>
+       <p>My lioness is <input type="number" id="year" min="2" max ="14"> years &
+       <input type="number" id="month" min="0" max ="11"> months.</p>
+       <p>Cooldown: <input type="number" id="cooldown" min="0" max ="20"></p><br><br>
+     </div>
+     <div class="heatCalc">
+       <h2>Next Heat Calculator</h2>
+         <button onclick="calculateHeat()">Go!</button>
+         <br><br>
+         <br><br>
+         <p id="hiddenText"><br></p>
+     </div>
+     <div class="lifetimeCalc">
+       <h2>Lifetime Breedings Calculator</h2>
+        <button onclick="lifetimeCalc()">Go!</button> <br>
+        <input type="checkbox" id="IBF">IBF every litter?<br>
+        <br><br>
+        <p id="hiddenText2"><br></p>
+     </div>
+     <div class="foot">
+       <p id="foot">This is a fan made website and is not officially associated to Lioden.com<br>
+         Please private message the creator of this website, <a href="https://www.lioden.com/territory.php?id=738">Kraft (#738)</a>, regarding any bugs, inquiries, suggestions or general comments.</p>
+     </div>
+   </div>
+   </body>
+</html>
+
+<script>
+function lifetimeCalc() {
+  years = document.getElementById("year").value;
+  months = document.getElementById("month").value;
+  cooldowns = document.getElementById("cooldown").value;
+
+  if (cooldowns == "" || months == "" || years == "") {
+    document.getElementById("hiddenText2").innerHTML = "Please enter all the feilds.";
+  }
+  else if (cooldowns > 20 || cooldown < 0) {
+    document.getElementById("hiddenText2").innerHTML = "Cooldown must be between 0 and 20.";
+  }
+  else if (months > 12 || months < 0) {
+    document.getElementById("hiddenText2").innerHTML = "Months must be between 0 and 12.";
+  }
+  else if (years > 16 || years < 2) {
+    document.getElementById("hiddenText2").innerHTML = "Years must be between 2 and 16.";
+  }
+  else if (years == 14 && months > 1) {
+    document.getElementById("hiddenText2").innerHTML = "Lioness cannot breed past 14 years!";
+  }
+  else {
+    var heats = 0;
+    var i = true;
+
+    while(i == true) {
+      months + cooldowns;
+        while (cooldowns > 0) {
+          months++; cooldowns--;
+          if (months == 12) {
+            years++; months = 0;
+          }
+        }
+        if (years >= 14 && months >= 1) {
+          document.getElementById("hiddenText2").innerHTML = "Your lioness has " + heats + " heat(s) left.";
+          i = false;
+        }
+        else {
+          heats++;
+          if (document.getElementById("IBF").checked == true){
+            cooldowns = 20;
+          }
+          else {
+          cooldowns = 23;
+          }
+        }
+    }
+  }
+}
+
+
+
+function calculateHeat() {
+  year = document.getElementById("year").value;
+  month = document.getElementById("month").value;
+  cooldown = document.getElementById("cooldown").value;
+
+  if (cooldown == "" || month == "" || year == "") {
+    document.getElementById("hiddenText").innerHTML = "Please enter all the feilds.";
+  }
+  else if (cooldown > 20 || cooldown < 0) {
+    document.getElementById("hiddenText").innerHTML = "Cooldown must be between 0 and 20.";
+  }
+  else if (month > 12 || month < 0) {
+    document.getElementById("hiddenText").innerHTML = "Months must be between 0 and 12.";
+  }
+  else if (year > 16 || year < 2) {
+    document.getElementById("hiddenText").innerHTML = "Years must be between 2 and 16.";
+  }
+  else if (year == 14 && month > 1) {
+    document.getElementById("hiddenText").innerHTML = "Lioness cannot breed past 14 years!";
+  }
+  else {
+  month + cooldown;
+  while (cooldown > 0) {
+    month++; cooldown--;
+      if (month == 12) {
+        year++; month = 0;
+      }
+    }
+    if (year >= 14 && month >= 1) {
+      document.getElementById("hiddenText").innerHTML = "Your lioness will be " + year + " years and " + month + " months, but unfortunately this will be too old to breed :(";
+    }
+
+    else {
+    document.getElementById("hiddenText").innerHTML = "Your lioness will be: " + year + " years and " + month + " months";
+  }
+}
+}
+</script>
