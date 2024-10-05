@@ -1,0 +1,5 @@
+.text-wrapimg {
+   shape-outside: url('https://i.postimg.cc/L5LV2f9R/artie-by-naki.png');
+  shape-image-threshold: 0.9;
+  shape-margin: 15px;
+}
